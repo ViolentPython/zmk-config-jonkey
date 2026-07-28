@@ -1,0 +1,16 @@
+file_format: "1"
+id: jonkey
+name: jonkey
+type: shield
+url: https://github.com/AtomicJon/jonkey
+requires: [pro_micro]
+exposes: [i2c_oled]
+features:
+  - keys
+  - display
+  - encoder
+  - underglow
+  - studio
+siblings:
+  - jonkey_left
+  - jonkey_right

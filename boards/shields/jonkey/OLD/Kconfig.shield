@@ -1,0 +1,5 @@
+config SHIELD_JONKEY_LEFT
+    def_bool $(shields_list_contains,jonkey_left)
+
+config SHIELD_JONKEY_RIGHT
+    def_bool $(shields_list_contains,jonkey_right)
