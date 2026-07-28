@@ -8,7 +8,7 @@
         transform = <&default_transform>;
 
         // Coordinates translated from QMK keyboard.json
-        keys = <
+        keys = 
             // Row 0
             <&key_physical_attrs 100 100 0 0 0 0 0>,
             <&key_physical_attrs 100 100 100 0 0 0 0>,
@@ -95,8 +95,8 @@
             <&key_physical_attrs 100 100 1200 400 0 0 0>,
             <&key_physical_attrs 100 100 1300 400 0 0 0>,
             <&key_physical_attrs 100 100 1400 400 0 0 0>,
-            <&key_physical_attrs 100 100 1500 400 0 0 0>
+            <&key_physical_attrs 100 100 1500 400 0 0 0>,
             <&key_physical_attrs 100 100 1600 400 0 0 0>
-        >;
+        ;
     };
 };
