@@ -15,7 +15,6 @@
 #define ADJUST 3
 
 / {
-    // Automatically activates ADJUST layer when LOWER + RAISE are held simultaneously
     conditional_layers {
         compatible = "zmk,conditional-layers";
         adjust_layer {
@@ -27,83 +26,47 @@
     keymap {
         compatible = "zmk,keymap";
 
-        /*
-         * LAYER 0: BASE (QWERTY)
-         * ------------------------------------------------------------------------------------------------------------
-         * | GRAVE |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   | MINUS |
-         * | ESC   |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   | BKSPC |
-         * | TAB   |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
-         * | LSHFT |  Z  |  X  |  C   |  V   |  B   |  MUTE  |  | PLAY  |  N   |  M    |  ,    |  .   |   /   | RSHFT |
-         *               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
-         */
         default_layer {
             display-name = "Default";
             bindings = <
-&kp GRAVE &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                           &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp MINUS
-&kp ESC   &kp Q  &kp W    &kp E    &kp R     &kp T                            &kp Y  &kp U     &kp I     &kp O    &kp P    &kp BSPC
-&kp TAB   &kp A  &kp S    &kp D    &kp F     &kp G                            &kp H  &kp J     &kp K     &kp L    &kp SEMI &kp SQT
-&kp LSHFT &kp Z  &kp X    &kp C    &kp V     &kp B      &kp C_MUTE &kp C_PP   &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
-                 &kp LGUI &kp LALT &kp LCTRL &mo LOWER  &kp RET    &kp SPACE  &mo RAISE &kp RCTRL &kp RALT &kp RGUI
+&kp ESC   &kp GRAVE &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                           &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp MINUS &kp EQUAL
+&kp INS   &kp TAB   &kp Q  &kp W    &kp E    &kp R     &kp T                            &kp Y  &kp U     &kp I     &kp O    &kp P    &kp LBKT  &kp RBKT
+&kp HOME  &kp LCTRL &kp A  &kp S    &kp D    &kp F     &kp G                            &kp H  &kp J     &kp K     &kp L    &kp SEMI &kp SQT   &kp BSLH
+&kp END   &kp LSHFT &kp Z  &kp X    &kp C    &kp V     &kp B      &kp C_PP     &kp C_PP &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &kp RSHFT &kp DEL
+&kp LCTRL &kp PSCRN &kp PG_DN &kp LGUI &kp LALT &kp SPACE &mo LOWER &mo RAISE  &kp SPACE &mo RAISE &kp BSPC &kp RET &kp LEFT &kp DOWN &kp UP    &kp RIGHT
             >;
         };
 
-        /*
-         * LAYER 1: LOWER (Symbols, Function Keys & Brackets)
-         * ------------------------------------------------------------------------------------------------------------
-         * | TILDE |  F1 |  F2 |  F3  |  F4  |  F5  |                   |  F6  |  F7   |  F8   |  F9  |  F10  |  F11  |
-         * |   `   | EXCL|  AT | HASH | DLLR | PRCNT|                   | CARET| AMPS  | ASTRK | LPAR |  RPAR |  F12  |
-         * | TRANS | EQUAL|PLUS| MINUS| LBRC | RBRC |                   | LBKT | RBKT  | PIPE  | BSLH | COLON | TRANS |
-         * | TRANS | UNDO| CUT | COPY | PASTE| TRANS| TRANS  |  | TRANS | TRANS| TRANS | TRANS | TRANS| TRANS | TRANS |
-         *               | TRANS| TRANS| TRANS| TRANS| TRANS  |  | TRANS | TRANS| TRANS | TRANS | TRANS|
-         */
         lower_layer {
             display-name = "Lower";
             bindings = <
-&kp TILDE &kp F1    &kp F2    &kp F3     &kp F4    &kp F5                    &kp F6    &kp F7   &kp F8    &kp F9    &kp F10   &kp F11
-&kp GRAVE &kp EXCL  &kp AT    &kp HASH   &kp DLLR  &kp PRCNT                 &kp CARET &kp AMPS &kp ASTRK &kp LPAR  &kp RPAR  &kp F12
-&trans    &kp EQUAL &kp PLUS  &kp MINUS  &kp LBRC  &kp RBRC                  &kp LBKT  &kp RBKT &kp PIPE  &kp BSLH  &kp COLON &trans
-&trans    &kp K_UNDO &kp K_CUT &kp K_COPY &kp K_PASTE &trans  &trans  &trans  &trans    &trans   &trans    &trans    &trans    &trans
-                    &trans    &trans     &trans    &trans  &trans  &trans  &trans    &trans   &trans    &trans
+&trans &trans    &kp F1    &kp F2    &kp F3     &kp F4    &kp F5                    &kp F6    &kp F7    &kp F8    &kp F9     &kp F10   &kp F11   &kp F12
+&trans &trans    &trans    &trans    &kp PG_UP  &trans    &trans                    &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_NUM &trans    &trans    &kp C_VOL_UP
+&trans &kp CLCK  &trans    &kp LEFT  &kp PG_DN  &kp RIGHT &trans                    &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans    &trans    &kp C_VOL_DN
+&trans &trans    &trans    &trans    &trans     &trans    &trans    &trans  &trans  &trans    &kp KP_N1 &kp KP_N2 &kp KP_N3  &trans    &trans    &kp SLCK
+&trans &trans    &trans    &trans    &trans     &trans    &trans    &trans  &trans  &trans    &trans    &kp KP_N0 &kp KP_DOT &kp C_PREV &kp C_NEXT &kp C_PP
             >;
         };
 
-        /*
-         * LAYER 2: RAISE (Navigation Cluster, Editing & Media Controls)
-         * ------------------------------------------------------------------------------------------------------------
-         * | TRANS | TRANS| TRANS| TRANS| TRANS| TRANS|                  | TRANS| TRANS | TRANS | TRANS| TRANS | TRANS |
-         * | TRANS | INS  | PSCR | MENU | TRANS| TRANS|                  | PG_UP| HOME  |   ^   | END  | NUM L | DEL   |
-         * | TRANS | LALT | LCTRL| LSHFT| TRANS| CAPS |                  | PG_DN|  <-   |   v   |  ->  | TRANS | BKSPC |
-         * | TRANS | UNDO | CUT  | COPY | PASTE| TRANS|  MUTE  | | TRANS | TRANS| PREV  | PLAY  | NEXT | TRANS | TRANS |
-         *                | TRANS| TRANS| TRANS| TRANS|  TRANS | | TRANS | TRANS| TRANS | TRANS | TRANS|
-         */
         raise_layer {
             display-name = "Raise";
             bindings = <
-&trans &trans    &trans    &trans    &trans &trans                   &trans    &trans    &trans   &trans    &trans      &trans
-&trans &kp INS   &kp PSCRN &kp K_APP &trans &trans                   &kp PG_UP &kp HOME  &kp UP   &kp END   &kp KP_NUM  &kp DEL
-&trans &kp LALT  &kp LCTRL &kp LSHFT &trans &kp CLCK                 &kp PG_DN &kp LEFT  &kp DOWN &kp RIGHT &trans      &kp BSPC
-&trans &kp K_UNDO &kp K_CUT &kp K_COPY &kp K_PASTE &trans &kp C_MUTE &trans &trans &kp C_PREV &kp C_PP &kp C_NEXT &trans &trans
-                 &trans    &trans    &trans &trans &trans        &trans &trans &trans    &trans   &trans
+&trans &trans    &kp F1    &kp F2    &kp F3     &kp F4    &kp F5                    &kp F6    &kp F7    &kp F8    &kp F9     &kp F10   &kp F11   &kp F12
+&trans &trans    &trans    &trans    &kp UP     &trans    &trans                    &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_NUM &trans    &trans    &kp C_VOL_UP
+&trans &kp CLCK  &trans    &kp LEFT  &kp DOWN   &kp RIGHT &trans                    &kp KP_N4 &kp KP_N5 &kp KP_N6 &trans     &trans    &trans    &kp C_VOL_DN
+&trans &trans    &trans    &trans    &trans     &trans    &trans    &trans  &trans  &trans    &kp KP_N1 &kp KP_N2 &kp KP_N3  &trans    &trans    &kp SLCK
+&trans &trans    &trans    &trans    &trans     &trans    &trans    &trans  &trans  &trans    &trans    &kp KP_N0 &kp KP_DOT &kp C_PREV &kp C_NEXT &kp C_PP
             >;
         };
 
-        /*
-         * LAYER 3: ADJUST (Bluetooth, System & RGB Controls)
-         * ------------------------------------------------------------------------------------------------------------
-         * | BT_CLR| BT1  | BT2  | BT3  | BT4  | BT5  |                  | TRANS| TRANS | TRANS | TRANS| TRANS | TRANS |
-         * | EP_TOG| RGB_HUD|RGB_HUI|RGB_SAD|RGB_SAI|RGB_EFF|             | TRANS| TRANS | TRANS | TRANS| TRANS | TRANS |
-         * | TRANS | RGB_BRD|RGB_BRI| TRANS | TRANS | TRANS |             | TRANS| TRANS | TRANS | TRANS| TRANS | TRANS |
-         * | TRANS | TRANS| TRANS| TRANS| TRANS| TRANS| RGB_TOG| | TRANS | TRANS| TRANS | TRANS | TRANS| TRANS | TRANS |
-         *                | TRANS| TRANS| TRANS| TRANS| TRANS  | | TRANS | TRANS| TRANS | TRANS | TRANS|
-         */
         adjust_layer {
             display-name = "Adjust";
             bindings = <
-&bt BT_CLR        &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                            &trans &trans &trans &trans &trans &trans
-&ext_power EP_TOG &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &rgb_ug RGB_EFF                         &trans &trans &trans &trans &trans &trans
-&trans            &rgb_ug RGB_BRD &rgb_ug RGB_BRI &trans          &trans          &trans                                  &trans &trans &trans &trans &trans &trans
-&trans            &trans          &trans          &trans          &trans          &trans            &rgb_ug RGB_TOG &trans &trans &trans &trans &trans &trans &trans
-                                  &trans          &trans          &trans          &trans            &trans          &trans &trans &trans &trans &trans
+&trans &bt BT_CLR        &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                            &trans &trans &trans &trans &trans &trans &trans
+&trans &ext_power EP_TOG &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &rgb_ug RGB_EFF                         &trans &trans &trans &trans &trans &trans &trans
+&trans &trans            &rgb_ug RGB_BRD &rgb_ug RGB_BRI &trans          &trans          &trans                                  &trans &trans &trans &trans &trans &trans &trans
+&trans &trans            &trans          &trans          &trans          &trans          &trans            &rgb_ug RGB_TOG &trans &trans &trans &trans &trans &trans &trans &trans
+&trans &trans            &trans          &trans          &trans          &trans          &trans            &trans          &trans &trans &trans &trans &trans &trans &trans &trans
             >;
         };
     };
